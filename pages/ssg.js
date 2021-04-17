@@ -1,7 +1,6 @@
 import styles from "../styles/Home.module.css";
 
 const Ssg = ({ pageProps }) => {
-  console.log(pageProps);
   const { seasons } = pageProps;
   return (
     <div className={styles.container}>
@@ -23,9 +22,13 @@ export async function getStaticProps() {
   const res = await fetch("http://stapi.co/api/v1/rest/season/search");
   const pageProps = await res.json();
 
+  if (!pageProps) {
+    return { notFound: true };
+  }
+
   return {
     props: { pageProps },
   };
 }
 
-export default Ssg 
+export default Ssg;

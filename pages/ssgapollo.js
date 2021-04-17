@@ -4,11 +4,15 @@ import client from "../apollo-client";
 
 const SsgApollo = ({ data }) => {
   const { allPosts } = data;
+  console.log(allPosts);
   return (
     <div className={styles.container}>
       <h1>This is SSG with Apollo Client</h1>
+      <p className={styles.code}>http://localhost:3000/api/graphql</p>
       {allPosts.map((post) => (
-        <p className={styles.card}>{post.title}</p>
+        <p className={styles.card} key={post.id}>
+          {post.title}
+        </p>
       ))}
     </div>
   );
@@ -19,11 +23,15 @@ export async function getStaticProps() {
     query: gql`
       query {
         allPosts {
+          id
           title
         }
       }
     `,
   });
+  if (!data) {
+    return { notFound: true };
+  }
   return { props: { data } };
 }
 

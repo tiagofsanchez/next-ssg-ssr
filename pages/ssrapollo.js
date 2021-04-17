@@ -7,9 +7,12 @@ const SsgApollo = ({ data }) => {
   console.log(allPosts);
   return (
     <div className={styles.container}>
-      <h1>This is SSG with Apollo Client</h1>
+      <h1>This is SSR with Apollo</h1>
       <p className={styles.code}>http://localhost:3000/api/graphql</p>
-      <p>Where we are using apollo client and Nextjs will fetch all the information below on build time</p>
+      <p>
+        Where we are using apollo client and Nextjs will fetch the information
+        for each page request
+      </p>
       {allPosts.map((post) => (
         <p className={styles.card} key={post.id}>
           {post.title}
@@ -19,7 +22,7 @@ const SsgApollo = ({ data }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await client.query({
     query: gql`
       query {

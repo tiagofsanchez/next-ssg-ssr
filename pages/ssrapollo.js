@@ -10,7 +10,7 @@ const SsgApollo = ({ data }) => {
       <h1>This is SSR with Apollo</h1>
       <p className={styles.code}>http://localhost:3000/api/graphql</p>
       <p>
-        Where we are using apollo client and Nextjs will fetch the information
+        Here we are using apollo client and Nextjs will fetch the information
         for each page request
       </p>
       {allPosts.map((post) => (

@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 
 const Ssg = ({ pageProps }) => {
   const { seasons } = pageProps;
+  console.log(seasons);
   return (
     <div className={styles.container}>
       <h1>This is SSG on a Star Trek API</h1>

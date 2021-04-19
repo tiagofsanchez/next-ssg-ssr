@@ -37,6 +37,13 @@ export default function Home() {
               </div>
             </a>
           </Link>
+          <Link href="/csrapollo">
+            <a>
+              <div className={styles.card}>
+                <p>CSR with apollo</p>
+              </div>
+            </a>
+          </Link>
         </div>
       </main>
     </div>
